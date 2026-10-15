@@ -27,7 +27,7 @@ function Footer() {
 
                             <div>
                                 <h2 className="font-bold text-slate-900">
-                                    UloAku
+                                    Padi-Save
                                 </h2>
 
                                 <p className="text-[10px] text-slate-500">
@@ -88,7 +88,7 @@ function Footer() {
 
                             <ContactItem
                                 icon={<FiMail />}
-                                text="UloAku@gmail.com.com"
+                                text="Padi-save@gmail.com.com"
                             />
 
                             <ContactItem
@@ -115,7 +115,7 @@ function Footer() {
                 <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left lg:px-8">
 
                     <p className="text-xs text-slate-500 sm:text-sm">
-                        © {new Date().getFullYear()} UloAku. All rights reserved.
+                        © {new Date().getFullYear()} Padi-save. All rights reserved.
                     </p>
 
                     <p className="text-xs text-slate-400 sm:text-sm">

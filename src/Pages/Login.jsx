@@ -60,7 +60,7 @@ function Login() {
     return (
         <>
 
-            <div className="mx-auto max-w-md w-full px-5 sm:px-6 border border-red-300 rounded mt-9">
+            <div className="mx-auto max-w-md w-full px-5 sm:px-6 border border-green-700 rounded mt-9">
 
                 {/* Error Message */}
                 {errorMsg && (

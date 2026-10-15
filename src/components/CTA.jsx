@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FiArrowRight, FiCheckCircle } from "react-icons/fi";
 
 function CTA() {
@@ -37,14 +38,18 @@ function CTA() {
                         {/* Buttons */}
                         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
 
-                            <button className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-green-800 transition hover:bg-green-50">
-                                Start Saving Today
-                                <FiArrowRight size={18} />
-                            </button>
+                            <Link to="/start-saving">
+                                <button className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-green-800 transition hover:bg-green-50">
+                                    Start Saving Today
+                                    <FiArrowRight size={18} />
+                                </button>
+                            </Link>
 
-                            <button className="rounded-xl border border-green-300/50 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-green-700">
-                                Learn More
-                            </button>
+                            {/* <Link to="/">
+                                <button className="rounded-xl border border-green-300/50 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-green-700">
+                                    Learn More
+                                </button>
+                            </Link> */}
 
                         </div>
 

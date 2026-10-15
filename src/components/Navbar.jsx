@@ -1,160 +1,114 @@
-import { FiMenu, FiX, } from "react-icons/fi";
-import { useState } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router-dom";
+import {
+    FiHome,
+    FiTarget,
+    FiUsers,
+    FiUser,
+} from "react-icons/fi";
+import logoimg from "../assets/logo.png";
 
+const navItems = [
+    {
+        name: "Home",
+        path: "/",
+        icon: FiHome,
+    },
+    {
+        name: "Finance",
+        path: "/contribution-plan",
+        icon: FiTarget,
+    },
+    {
+        name: "Groups",
+        path: "/group-register",
+        icon: FiUsers,
+    },
+    {
+        name: "Profile",
+        path: "/profile",
+        icon: FiUser,
+    },
+];
 
-function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+export default function Navbar() {
     return (
-        <header className="w-full bg-white">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+        <>
+            {/* Desktop Navbar */}
+            <nav className="hidden md:block bg-white border-b border-gray-100 z-10 w-full fixed ">
+                <div className="mx-auto flex max-w-8xl items-center justify-between px-6 py-4 ">
 
-                {/* Logo */}
-                <div className="flex items-center gap-3">
-                    <Link to="/">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-700 text-xl font-bold text-white">
-                            ₦
-                        </div>
-                    </Link>
-                    <div>
-                        <Link to="/">
-                            <h1 className="text-lg font-bold leading-none text-slate-900">
-                                UloAku
-                            </h1>
+                    <NavLink to="/" className="flex items-center">
+                        <img
+                            src={logoimg}
+                            alt=" Logo"
+                            className="h-15 rounded-2xl w-auto obtain-contain "
+                        />
+                    </NavLink>
 
-                            <p className="mt-1 text-[10px] text-slate-500 sm:text-xs">
-                                Daily Contribution, Better Future
-                            </p>
-                        </Link>
+                    <div className="flex items-center gap-8">
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+
+                            return (
+                                <NavLink
+                                    key={item.name}
+                                    to={item.path}
+                                    end={item.path === "/"}
+                                    className={({ isActive }) =>
+                                        `flex items-center gap-2 text-sm font-medium transition ${isActive
+                                            ? "text-green-700"
+                                            : "text-gray-600 hover:text-green-700"
+                                        }`
+                                    }
+                                >
+                                    <Icon size={18} />
+                                    {item.name}
+                                </NavLink>
+                            );
+                        })}
                     </div>
-                </div>
 
-                {/* Desktop Navigation */}
-                <div className="hidden items-center gap-8 md:flex">
-                    <Link to="/"
-                        href="#home"
-                        className="border-b-2 border-green-700 pb-1 text-sm font-semibold text-green-700"
+                    <NavLink
+                        to="/login"
+                        className="rounded-xl bg-green-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-900"
                     >
-                        Home
-                    </Link>
-
-                    <a
-                        href="#how-it-works"
-                        className="text-sm font-medium text-slate-700 transition hover:text-green-700"
-                    >
-                        How It Works
-                    </a>
-
-                    <a
-                        href="#features"
-                        className="text-sm font-medium text-slate-700 transition hover:text-green-700"
-                    >
-                        Features
-                    </a>
-
-                    <a
-                        href="#about"
-                        className="text-sm font-medium text-slate-700 transition hover:text-green-700"
-                    >
-                        About Us
-                    </a>
-
-                    <a
-                        href="#faqs"
-                        className="text-sm font-medium text-slate-700 transition hover:text-green-700"
-                    >
-                        FAQs
-                    </a>
-                </div>
-
-                {/* Desktop Buttons */}
-                <div className="hidden items-center gap-4 md:flex">
-                    <Link to="/login" className="rounded-lg border border-green-700 px-7 py-3 text-sm font-semibold text-green-700 transition hover:bg-green-50">
                         Login
-                    </Link>
-
-
-                    <Link to="/register" className="rounded-lg bg-green-700 px-7 py-3 text-sm font-semibold text-white transition hover:bg-green-800">
-                        Get Started
-                    </Link>
+                    </NavLink>
                 </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 md:hidden"
-                    aria-label="Toggle menu"
-                >
-                    {isMenuOpen ? (
-                        <FiX size={22} />
-                    ) : (
-                        <FiMenu size={22} />
-                    )}
-                </button>
             </nav>
 
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div className="border-t border-slate-100 bg-white px-5 py-5 shadow-sm md:hidden">
+            {/* Mobile Bottom Navigation */}
+            <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_15px_rgba(0,0,0,0.06)] backdrop-blur md:hidden">
+                <div className="mx-auto grid max-w-lg grid-cols-4">
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
 
-                    <div className="flex flex-col gap-5">
-
-                        <a
-                            href="#home"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="font-medium text-green-700"
-                        >
-                            Home
-                        </a>
-
-                        <a
-                            href="#how-it-works"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="font-medium text-slate-700"
-                        >
-                            How It Works
-                        </a>
-
-                        <a
-                            href="#features"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="font-medium text-slate-700"
-                        >
-                            Features
-                        </a>
-
-                        <a
-                            href="#about"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="font-medium text-slate-700"
-                        >
-                            About Us
-                        </a>
-
-                        <a
-                            href="#faqs"
-                            onClick={() => setIsMenuOpen(false)}
-                            className="font-medium text-slate-700"
-                        >
-                            FAQs
-                        </a>
-
-                        <div className="flex flex-col gap-3 border-t border-slate-100 pt-5">
-                            <Link to="/login" className="rounded-lg border border-green-700 px-7 py-3 text-sm font-semibold text-green-700 transition hover:bg-green-50">
-                                Login
-                            </Link>
-
-                            <Link to="/register" className="rounded-lg bg-green-700 px-7 py-3 text-sm font-semibold text-white transition hover:bg-green-800">
-                                Get Started
-                            </Link>
-                        </div>
-
-                    </div>
+                        return (
+                            <NavLink
+                                key={item.name}
+                                to={item.path}
+                                end={item.path === "/"}
+                                className={({ isActive }) =>
+                                    `flex min-h-[64px] flex-col items-center justify-center gap-1 px-1 py-2 text-xs transition ${isActive
+                                        ? "font-semibold text-green-800"
+                                        : "text-gray-500 hover:text-green-700"
+                                    }`
+                                }
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        <Icon
+                                            size={22}
+                                            strokeWidth={isActive ? 2.5 : 1.8}
+                                        />
+                                        <span>{item.name}</span>
+                                    </>
+                                )}
+                            </NavLink>
+                        );
+                    })}
                 </div>
-            )}
-        </header>
+            </nav>
+        </>
     );
 }
-
-export default Navbar;

@@ -1,4 +1,10 @@
-import { FiUserPlus, FiTarget, FiCalendar, FiTrendingUp, } from "react-icons/fi";
+import {
+    FiUserPlus,
+    FiTarget,
+    FiCalendar,
+    FiTrendingUp,
+    FiClock,
+} from "react-icons/fi";
 
 const steps = [
     {
@@ -6,7 +12,7 @@ const steps = [
         icon: <FiUserPlus />,
         title: "Create Your Account",
         description:
-            "Sign up in a few minutes and create your secure NaijaDaily account.",
+            "Sign up in a few minutes and create your secure PadiSave account with MicroFinance Bank.",
     },
     {
         number: "02",
@@ -20,14 +26,21 @@ const steps = [
         icon: <FiCalendar />,
         title: "Contribute Daily",
         description:
-            "Make small contributions every day, starting from ₦200 and consistent with your plan.",
+            "Start saving from just ₦200 daily and stay consistent with your savings plan.",
     },
     {
         number: "04",
         icon: <FiTrendingUp />,
         title: "Watch Your Savings Grow",
         description:
-            "Track your progress and move closer to your financial goals every day.",
+            "Track your contributions and monitor your progress as you move closer to your financial goals.",
+    },
+    {
+        number: "05",
+        icon: <FiClock />,
+        title: "Withdraw Your Savings",
+        description:
+            "Request your money when needed, After three months of registration.",
     },
 ];
 
@@ -35,60 +48,68 @@ function HowItWorks() {
     return (
         <section
             id="how-it-works"
-            className="bg-slate-50 px-5 py-16 sm:py-20 lg:px-8 lg:py-24"
+            className="bg-stone-50 px-5 py-16 sm:px-8 sm:py-20 lg:py-24"
         >
             <div className="mx-auto max-w-7xl">
 
                 {/* Section heading */}
                 <div className="mx-auto max-w-2xl text-center">
 
-                    <span className="text-sm font-semibold uppercase tracking-wider text-green-700">
-                        How It Works
-                    </span>
-
-                    <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl">
-                        Saving doesn't have to be complicated.
+                    <h2 className="mt-5 text-3xl font-bold tracking-tight
+            text-slate-900 sm:text-4xl">
+                        Start Small. Save Consistently.
+                        <span className="block text-green-700">
+                            Achieve More Together.
+                        </span>
                     </h2>
 
-                    <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
-                        Start small, stay consistent, and let every contribution
-                        take you closer to your goal.
+                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                        Getting started with PadiSave is simple. Follow these five steps
+                        to build a consistent savings habit and work towards your goals.
                     </p>
-
                 </div>
 
                 {/* Steps */}
-                <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4">
+                <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2
+          lg:mt-16 lg:grid-cols-3 xl:grid-cols-5">
 
                     {steps.map((step) => (
                         <div
                             key={step.number}
-                            className="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                            className="group relative rounded-2xl border border-green-100
+                bg-white p-6 shadow-sm transition duration-300
+                hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
                         >
-
-                            {/* Number */}
-                            <span className="absolute right-5 top-5 text-sm font-bold text-green-100">
+                            {/* Step number */}
+                            <span className="absolute right-5 top-5 text-3xl font-bold
+                text-green-100 transition group-hover:text-green-200">
                                 {step.number}
                             </span>
 
                             {/* Icon */}
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-xl text-green-700">
+                            <div className="flex h-14 w-14 items-center justify-center
+                rounded-2xl bg-green-50 text-2xl text-green-700
+                transition group-hover:bg-green-700 group-hover:text-white">
                                 {step.icon}
                             </div>
 
-                            {/* Text */}
-                            <h3 className="mt-5 text-lg font-bold text-slate-900">
+                            {/* Step content */}
+                            <h3 className="mt-6 text-lg font-bold leading-snug text-slate-900">
                                 {step.title}
                             </h3>
 
-                            <p className="mt-3 text-sm leading-6 text-slate-500">
+                            <p className="mt-3 text-sm leading-7 text-slate-500">
                                 {step.description}
                             </p>
 
+                            {/* Bottom accent */}
+                            <div className="mt-6 h-1 w-10 rounded-full bg-green-600
+                transition-all group-hover:w-16" />
                         </div>
                     ))}
 
                 </div>
+
             </div>
         </section>
     );

@@ -1,335 +1,229 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FiUser, FiPhone, FiCheck } from "react-icons/fi";
 
 
-function Register() {
-    const navigate = useNavigate();
 
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+const Register = () => {
     const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
+        firstName: "",
+        surname: "",
         phone: "",
-        password: "",
-        confirmPassword: "",
-        dailyContribution: "",
+        contributionPlan: "",
+        groupPlan: "",
+        agreeToTerms: false,
     });
 
-    const [loading, setLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState(null);
-
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value, type, checked } = e.target;
 
         setFormData((prev) => ({
             ...prev,
-            [name]: value,
+            [name]: type === "checkbox" ? checked : value,
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        setErrorMsg(null);
-
-        // Check passwords
-        if (formData.password !== formData.confirmPassword) {
-            setErrorMsg("Passwords do not match.");
+        if (!formData.agreeToTerms) {
+            alert("Please agree to the terms and conditions.");
             return;
         }
 
-        // Check contribution
-        if (!formData.dailyContribution) {
-            setErrorMsg("Please select your daily contribution.");
-            return;
-        }
-
-        setLoading(true);
-
-        try {
-            /*
-             * Create Supabase account
-             *
-             * The selected contribution plan is passed
-             * inside user metadata so it can be used when
-             * creating the user's profile/plan.
-             */
-            const { data, error } = await supabase.auth.signUp({
-                email: formData.email,
-                password: formData.password,
-                options: {
-                    data: {
-                        full_name: formData.fullName,
-                        phone: formData.phone,
-                        daily_contribution: Number(
-                            formData.dailyContribution
-                        ),
-                    },
-                },
-            });
-
-            if (error) {
-                setErrorMsg(error.message);
-                return;
-            }
-
-            if (data.user) {
-                navigate("/payment");
-            }
-        } catch (error) {
-            console.error(error);
-
-            setErrorMsg(
-                "An unexpected error occurred. Please try again."
-            );
-        } finally {
-            setLoading(false);
-        }
+        console.log("Registration Data:", formData);
     };
 
     return (
-        <div className="mx-auto mt-9 w-full max-w-md px-5 sm:px-6">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-
+        <div className="min-h-screen bg-[#f5efe6] px-4 py-10">
+            <div className="mx-auto max-w-2xl">
                 {/* Header */}
                 <div className="mb-8 text-center">
-                    <h1 className="text-2xl font-bold text-gray-800">
+                    <h1 className="text-3xl font-bold text-[#4a2c1a]">
                         Create Your Account
                     </h1>
 
-                    <p className="mt-2 text-sm text-gray-500">
-                        Start your daily contribution journey
+                    <p className="mt-2 text-gray-600">
+                        Join our daily contribution community and start saving together.
                     </p>
                 </div>
 
-                {/* Error Message */}
-                {errorMsg && (
-                    <div className="mb-6 rounded-xl bg-red-50 p-4 text-sm text-red-600">
-                        {errorMsg}
-                    </div>
-                )}
+                {/* Form Card */}
+                <div className="rounded-2xl bg-white p-6 shadow-md sm:p-8">
+                    <form onSubmit={handleSubmit} className="space-y-6">
 
-                <form
-                    className="space-y-5"
-                    onSubmit={handleSubmit}
-                >
-                    {/* Full Name */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Full Name
-                        </label>
+                        {/* First Name */}
+                        <div>
+                            <label
+                                htmlFor="firstName"
+                                className="mb-2 block text-sm font-medium text-[#4a2c1a]"
+                            >
+                                First name
+                            </label>
 
-                        <input
-                            type="text"
-                            name="fullName"
-                            required
-                            value={formData.fullName}
-                            onChange={handleChange}
-                            placeholder="Enter your full name"
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                        />
-                    </div>
+                            <div className="relative">
+                                <FiUser className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
 
-                    {/* Email */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Email Address
-                        </label>
+                                <input
+                                    id="firstName"
+                                    type="text"
+                                    name="firstName"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    placeholder="Enter your first name"
+                                    required
+                                    className="w-full rounded-xl border border-gray-200 py-3 pl-11 pr-4 outline-none transition focus:border-[#4a2c1a] focus:ring-2 focus:ring-[#4a2c1a]/10"
+                                />
+                            </div>
+                        </div>
 
-                        <input
-                            type="email"
-                            name="email"
-                            required
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Enter your email"
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                        />
-                    </div>
+                        {/* Surname */}
+                        <div>
+                            <label
+                                htmlFor="surname"
+                                className="mb-2 block text-sm font-medium text-[#4a2c1a]"
+                            >
+                                Surname
+                            </label>
 
-                    {/* Phone */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Phone Number
-                        </label>
-
-                        <input
-                            type="tel"
-                            name="phone"
-                            required
-                            value={formData.phone}
-                            onChange={handleChange}
-                            placeholder="08012345678"
-                            className="w-full rounded-xl border border-gray-300 px-4 py-3 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                        />
-                    </div>
-
-                    {/* Daily Contribution */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Daily Contribution
-                        </label>
-
-                        <select
-                            name="dailyContribution"
-                            required
-                            value={formData.dailyContribution}
-                            onChange={handleChange}
-                            className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                        >
-                            <option value="">
-                                Select daily contribution
-                            </option>
-
-                            <option value="200">
-                                ₦200 per day
-                            </option>
-
-                            <option value="500">
-                                ₦500 per day
-                            </option>
-
-                            <option value="1000">
-                                ₦1,000 per day
-                            </option>
-
-                            <option value="2000">
-                                ₦2,000 per day
-                            </option>
-
-                            <option value="5000">
-                                ₦5,000 per day
-                            </option>
-                        </select>
-
-                        <p className="mt-2 text-xs text-gray-500">
-                            You can change your contribution plan later
-                            from your dashboard settings.
-                        </p>
-                    </div>
-
-                    {/* Password */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Password
-                        </label>
-
-                        <div className="relative">
                             <input
-                                type={
-                                    showPassword
-                                        ? "text"
-                                        : "password"
-                                }
-                                name="password"
-                                required
-                                minLength={6}
-                                value={formData.password}
+                                id="surname"
+                                type="text"
+                                name="surname"
+                                value={formData.surname}
                                 onChange={handleChange}
-                                placeholder="Create a password"
-                                className="w-full rounded-xl border border-gray-300 px-4 py-3 pr-12 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                                placeholder="Enter your surname"
+                                required
+                                className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#4a2c1a] focus:ring-2 focus:ring-[#4a2c1a]/10"
+                            />
+                        </div>
+
+                        {/* Phone */}
+                        <div>
+                            <label
+                                htmlFor="phone"
+                                className="mb-2 block text-sm font-medium text-[#4a2c1a]"
+                            >
+                                Phone number
+                            </label>
+
+                            <div className="relative">
+                                <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+
+                                <input
+                                    id="phone"
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="08012345678"
+                                    required
+                                    className="w-full rounded-xl border border-gray-200 py-3 pl-11 pr-4 outline-none transition focus:border-[#4a2c1a] focus:ring-2 focus:ring-[#4a2c1a]/10"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Contribution Plan */}
+                        <div>
+                            <label className="mb-3 block text-sm font-medium text-[#4a2c1a]">
+                                Choose contribution plan
+                            </label>
+
+                            <div className="grid gap-3 sm:grid-cols-3">
+                                {[
+                                    { value: "200", label: "₦200", text: "Daily" },
+                                    { value: "500", label: "₦500", text: "Daily" },
+                                    { value: "1000", label: "₦1,000", text: "Daily" },
+                                ].map((plan) => (
+                                    <label
+                                        key={plan.value}
+                                        className={`cursor-pointer rounded-xl border p-4 text-center transition ${formData.contributionPlan === plan.value
+                                                ? "border-[#4a2c1a] bg-[#f5efe6]"
+                                                : "border-gray-200 hover:border-[#c1b1a4]"
+                                            }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name="contributionPlan"
+                                            value={plan.value}
+                                            checked={formData.contributionPlan === plan.value}
+                                            onChange={handleChange}
+                                            required
+                                            className="sr-only"
+                                        />
+
+                                        <p className="text-xl font-bold text-[#4a2c1a]">
+                                            {plan.label}
+                                        </p>
+
+                                        <p className="mt-1 text-sm text-gray-500">
+                                            {plan.text}
+                                        </p>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Group Payment Plan */}
+                        <div>
+                            <label
+                                htmlFor="groupPlan"
+                                className="mb-2 block text-sm font-medium text-[#4a2c1a]"
+                            >
+                                Group contribution payment plan
+                            </label>
+
+                            <select
+                                id="groupPlan"
+                                name="groupPlan"
+                                value={formData.groupPlan}
+                                onChange={handleChange}
+                                required
+                                className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#4a2c1a] focus:ring-2 focus:ring-[#4a2c1a]/10"
+                            >
+                                <option value="">Select payment plan</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+
+                        {/* Terms */}
+                        <label className="flex cursor-pointer items-start gap-3">
+                            <input
+                                type="checkbox"
+                                name="agreeToTerms"
+                                checked={formData.agreeToTerms}
+                                onChange={handleChange}
+                                className="mt-1 h-4 w-4 accent-[#4a2c1a]"
                             />
 
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setShowPassword(!showPassword)
-                                }
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-500"
-                            >
-                                {showPassword ? (
-                                    <FaEyeSlash />
-                                ) : (
-                                    <FaEye />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Confirm Password */}
-                    <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">
-                            Confirm Password
+                            <span className="text-sm leading-6 text-gray-600">
+                                I agree to the{" "}
+                                <button
+                                    type="button"
+                                    className="font-semibold text-[#4a2c1a] hover:underline"
+                                >
+                                    Terms & Conditions
+                                </button>
+                                .
+                            </span>
                         </label>
 
-                        <div className="relative">
-                            <input
-                                type={
-                                    showConfirmPassword
-                                        ? "text"
-                                        : "password"
-                                }
-                                name="confirmPassword"
-                                required
-                                minLength={6}
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                placeholder="Confirm your password"
-                                className="w-full rounded-xl border border-gray-300 px-4 py-3 pr-12 outline-none transition focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-                            />
-
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setShowConfirmPassword(
-                                        !showConfirmPassword
-                                    )
-                                }
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-500"
-                            >
-                                {showConfirmPassword ? (
-                                    <FaEyeSlash />
-                                ) : (
-                                    <FaEye />
-                                )}
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Terms */}
-                    <div className="flex items-start gap-3">
-                        <input
-                            type="checkbox"
-                            required
-                            className="mt-1 h-4 w-4 accent-orange-500"
-                        />
-
-                        <p className="text-sm text-gray-600">
-                            I agree to the terms and conditions.
-                        </p>
-                    </div>
-
-                    {/* Register Button */}
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full cursor-pointer rounded-xl bg-green-700 py-4 font-semibold text-white transition hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-400"
-                    >
-                        {loading
-                            ? "Creating Account..."
-                            : "Create Account"}
-                    </button>
-                </form>
-
-                {/* Login Link */}
-                <div className="mt-6 text-center">
-                    <p className="text-sm text-gray-600">
-                        Already have an account?{" "}
-                        <Link
-                            to="/login"
-                            className="font-semibold text-orange-500 hover:underline"
+                        {/* Submit */}
+                        <button
+                            type="submit"
+                            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#4a2c1a] px-6 py-3.5 font-semibold text-white transition hover:opacity-90"
                         >
-                            Sign In
-                        </Link>
-                    </p>
+                            <FiCheck />
+                            Create Account
+                        </button>
+                    </form>
                 </div>
-
             </div>
         </div>
     );
-}
+};
 
 export default Register;
+

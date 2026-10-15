@@ -1,60 +1,32 @@
-import {
-    FiTarget,
-    FiShield,
-    FiBarChart2,
-    FiBell,
-    FiSmartphone,
-} from "react-icons/fi";
-import { FiTrendingUp } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { FiArrowRight } from "react-icons/fi";
+import { GiTakeMyMoney } from "react-icons/gi";
+import { FiUsers } from "react-icons/fi";
 
-const features = [
-    {
-        icon: <FiTrendingUp />,
-        title: "Track Your Savings",
-        description:
-            "Know exactly how much you've saved and monitor your progress in one place.",
-    },
-    {
-        icon: <FiTarget />,
-        title: "Savings Goals",
-        description:
-            "Create personal goals and track how close you are to achieving them.",
-    },
-    {
-        icon: <FiShield />,
-        title: "Secure Savings",
-        description:
-            "Keep your financial information protected with a secure savings platform.",
-    },
-    {
-        icon: <FiBarChart2 />,
-        title: "Simple Reports",
-        description:
-            "Understand your contribution history with clear and simple financial insights.",
-    },
-    {
-        icon: <FiBell />,
-        title: "Contribution Reminders",
-        description:
-            "Get reminders that help you stay consistent with your daily contributions.",
-    },
-    {
-        icon: <FiSmartphone />,
-        title: "Built for Mobile",
-        description:
-            "Manage your savings easily from your phone wherever you are.",
-    },
-];
+
+
+// const features = [
+//     {
+//         icon: <IoPersonOutline />,
+//         title: "Personal Savings",
+//         description: "personally save and monitor your progress in one place.",
+//         path: "/dashboard",
+//     },
+//     {
+//         icon: <HiOutlineUserGroup />,
+//         title: "Group Saving Goals",
+//         description: "Create a group your friends to join you and set a target",
+//     },
+
+
+// ];
 
 function Features() {
     return (
-        <section
-            id="features"
-            className="bg-white px-5 py-16 sm:py-20 lg:px-8 lg:py-24"
-        >
-            <div className="mx-auto max-w-7xl">
+        <section id="features" className="bg-white px-5 py-16 sm:py-20 lg:px-8 lg:py-24 ">
+            <div className="mx-auto max-w-7xl ">
 
-                <div className="mx-auto max-w-2xl text-center">
+                <div className="mx-auto max-w-2xl text-center ">
 
                     <span className="text-sm font-semibold uppercase tracking-wider text-green-700">
                         Features
@@ -65,36 +37,79 @@ function Features() {
                     </h2>
 
                     <p className="mt-4 text-sm leading-6 text-slate-600 sm:text-base">
-                        NaijaDaily gives you simple tools to build a consistent
+                        Padi-save gives you simple tools to build a consistent
                         saving habit without making things complicated.
                     </p>
 
                 </div>
 
-                <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+                {/* Savings options */}
+                <section>
+                    <h2 className="mb-4 text-lg font-bold text-gray-900 sm:text-xl">
+                        Your Savings
+                    </h2>
 
-                    {features.map((feature) => (
-                        <div
-                            key={feature.title}
-                            className="rounded-2xl border border-slate-200 p-6 transition hover:border-green-200 hover:shadow-md"
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        {/* Personal savings card */}
+                        <Link
+                            to="/personal-savings"
+                            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
                         >
-
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-xl text-green-700">
-                                {feature.icon}
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800">
+                                <GiTakeMyMoney size={25} />
                             </div>
 
-                            <h3 className="mt-5 text-lg font-bold text-slate-900">
-                                {feature.title}
+                            <h3 className="mt-5 text-xl font-bold text-gray-900">
+                                Personal Savings
                             </h3>
 
-                            <p className="mt-3 text-sm leading-6 text-slate-500">
-                                {feature.description}
+                            <p className="mt-2 text-sm leading-6 text-gray-600">
+                                Save towards your personal goals, monitor your deposits,
+                                and check when your money becomes eligible for withdrawal.
                             </p>
 
-                        </div>
-                    ))}
+                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-800">
+                                Open Personal Savings
+                                <FiArrowRight className="transition group-hover:translate-x-1" />
+                            </div>
+                        </Link>
 
-                </div>
+                        {/* Group savings card */}
+                        <Link
+                            to="/group-register"
+                            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
+                        >
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800">
+                                <FiUsers size={25} />
+                            </div>
+
+                            <h3 className="mt-5 text-xl font-bold text-gray-900">
+                                Group Savings
+                            </h3>
+
+                            <p className="mt-2 text-sm leading-6 text-gray-600">
+                                Create a savings group, invite friends using their
+                                PadiSave ID, or accept an invitation to join a group.
+                            </p>
+
+                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-800">
+                                Open Group Savings
+                                <FiArrowRight className="transition group-hover:translate-x-1" />
+                            </div>
+                        </Link>
+                    </div>
+                </section>
+
+                {/* Helpful information */}
+                <section className="mt-8 rounded-2xl bg-green-900 p-5 text-white sm:p-6">
+                    <h2 className="text-lg font-bold">Save on your own. Grow together.</h2>
+
+                    <p className="mt-2 max-w-2xl text-sm leading-6 text-green-100">
+                        Manage your personal savings independently while joining
+                        trusted groups to work towards shared financial goals.
+                    </p>
+                </section>
+
             </div>
         </section>
     );
