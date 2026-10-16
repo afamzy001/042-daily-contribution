@@ -59,7 +59,7 @@ export default function PersonalSavings() {
     }
 
     return (
-        <div className="min-h-screen bg-stone-50 px-4 py-8 sm:px-6 lg:px-8">
+        <div className=" bg-stone-50 px-4 py-15 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
 
                 {/* Header */}
@@ -74,7 +74,7 @@ export default function PersonalSavings() {
 
                 <div className="mb-8">
                     <p className="mb-2 font-semibold text-green-700">
-                        PADISAVE PERSONAL SAVINGS
+                        PADISAVE PERSONAL SAVINGS.
                     </p>
 
                     <h1 className="text-3xl font-bold text-stone-900 sm:text-4xl">

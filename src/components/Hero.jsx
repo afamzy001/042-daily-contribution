@@ -3,6 +3,10 @@ import { FaArrowRight } from "react-icons/fa";
 import { FiShield } from "react-icons/fi";
 import { TfiCalendar, TfiWallet } from "react-icons/tfi";
 import bannerimg from "../assets/banner.jpg";
+import { LuArrowDownToLine } from "react-icons/lu";
+
+
+
 
 function Hero() {
     return (
@@ -51,17 +55,6 @@ function Hero() {
                         PadiSave's savings terms.
                     </p>
 
-                    {/* Call to action */}
-                    <div className="mt-7 sm:mt-8">
-                        <Link
-                            to="/start-saving"
-                            className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-950 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
-                        >
-                            Save Now
-                            <FaArrowRight size={17} />
-                        </Link>
-                    </div>
-
                     {/* Benefits */}
                     <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6 lg:mt-14">
 
@@ -84,6 +77,19 @@ function Hero() {
                         />
 
                     </div>
+
+                    {/* Call to action */}
+                    <div className="mt-7 sm:mt-8">
+                        <Link
+                            to="/start-saving"
+                            className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-green-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-green-950 sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+                        >
+                            Save Now
+                            <LuArrowDownToLine size={17} />
+                        </Link>
+                    </div>
+
+
                 </div>
             </div>
         </section>

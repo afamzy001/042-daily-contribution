@@ -3,11 +3,7 @@ import { useState } from "react";
 
 function GroupRegister() {
     const [formData, setFormData] = useState({
-        name: "",
-        surname: "",
-        phone: "",
-        email: "",
-        password: "",
+
         groupName: "",
         purpose: "Business capital",
         frequency: "Weekly",
@@ -97,115 +93,15 @@ function GroupRegister() {
                         className="space-y-7 rounded-2xl bg-white p-5 shadow-sm sm:p-8 lg:col-span-2"
                     >
 
-                        {/* Account details */}
-                        <section>
-                            <h2 className="mb-4 text-xl font-bold text-green-900">
-                                Your account details
-                            </h2>
 
-                            <div className="space-y-4">
-                                <div>
-                                    <label className={labelClass}>
-                                        name *
-                                    </label>
-
-                                    <input
-                                        type="tel"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        placeholder="name"
-                                        autoComplete="first-Name"
-                                        required
-                                        className={inputClass}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className={labelClass}>
-                                        Surname *
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        name="surname"
-                                        value={formData.surname}
-                                        onChange={handleChange}
-                                        placeholder="Surname"
-                                        autoComplete="tel"
-                                        required
-                                        className={inputClass}
-                                    />
-                                </div>
-
-
-                                <div>
-                                    <label className={labelClass}>
-                                        Phone number *
-                                    </label>
-
-                                    <input
-                                        type="tel"
-                                        name="phone"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        placeholder="08012345678"
-                                        autoComplete="tel"
-                                        required
-                                        className={inputClass}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className={labelClass}>
-                                        Email address *
-                                    </label>
-
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeholder="you@example.com"
-                                        autoComplete="email"
-                                        required
-                                        className={inputClass}
-                                    />
-                                </div>
-
-                                <div>
-                                    <label className={labelClass}>
-                                        Password *
-                                    </label>
-
-                                    <input
-                                        type="password"
-                                        name="password"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                        placeholder="Create a password"
-                                        autoComplete="new-password"
-                                        minLength={8}
-                                        required
-                                        className={inputClass}
-                                    />
-
-                                    <p className="mt-1 text-xs text-stone-500">
-                                        Use at least 8 characters.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <hr className="border-stone-200" />
 
                         {/* Group details */}
                         <section>
-                            <h2 className="mb-1 text-xl font-bold text-green-900">
+                            <h2 className="mb-1  font-bold text-green-900">
                                 Set up your savings group
                             </h2>
 
-                            <p className="mb-5 text-sm text-stone-500">
+                            <p className="mb-5 text-sm text-stone-800">
                                 Choose a plan that works for every member.
                             </p>
 
@@ -241,7 +137,7 @@ function GroupRegister() {
                                         className={inputClass}
                                     >
                                         <option>Business capital</option>
-                                        <option>Future funding</option>
+                                        <option>Future Savings</option>
                                         <option>Detty December</option>
                                         <option>Group Project</option>
                                         <option>future investment</option>

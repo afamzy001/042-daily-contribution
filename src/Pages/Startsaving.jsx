@@ -11,7 +11,7 @@ export default function Startsaving() {
     };
 
     return (
-        <main className="min-h-screen bg-stone-50 px-4 py-8 sm:px-6 lg:px-8 relative">
+        <main className="min-h-screen bg-stone-50 px-4 py-18 sm:px-6 lg:px-8 relative">
             <div className="mx-auto max-w-6xl">
                 {/* Welcome section */}
                 <section className="mb-8">
@@ -41,26 +41,26 @@ export default function Startsaving() {
                         Your Savings
                     </h2>
 
-                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 ">
                         {/* Personal savings card */}
                         <Link
                             to="/personal-savings"
-                            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
+                            className="group rounded-2xl border border-gray-200 bg-[#012d1b] p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
                         >
                             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800">
                                 <GiTakeMyMoney size={25} />
                             </div>
 
-                            <h3 className="mt-5 text-xl font-bold text-gray-900">
+                            <h3 className="mt-5 text-xl font-bold text-stone-100">
                                 Personal Savings
                             </h3>
 
-                            <p className="mt-2 text-sm leading-6 text-gray-600">
+                            <p className="mt-2 text-sm leading-6 text-gray-100">
                                 Save towards your personal goals, monitor your deposits,
                                 and check when your money becomes eligible for withdrawal.
                             </p>
 
-                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-800">
+                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-100">
                                 Open Personal Savings
                                 <FiArrowRight className="transition group-hover:translate-x-1" />
                             </div>
@@ -69,22 +69,22 @@ export default function Startsaving() {
                         {/* Group savings card */}
                         <Link
                             to="/group-savings"
-                            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
+                            className="group rounded-2xl border border-gray-200 bg-[#012d1b] p-5 shadow-sm transition hover:-translate-y-1 hover:border-green-300 hover:shadow-md sm:p-7"
                         >
                             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-800">
                                 <FiUsers size={25} />
                             </div>
 
-                            <h3 className="mt-5 text-xl font-bold text-gray-900">
+                            <h3 className="mt-5 text-xl font-bold text-gray-100">
                                 Group Savings
                             </h3>
 
-                            <p className="mt-2 text-sm leading-6 text-gray-600">
+                            <p className="mt-2 text-sm leading-6 text-gray-100">
                                 Create a savings group, invite friends using their
                                 PadiSave ID, or accept an invitation to join a group.
                             </p>
 
-                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-800">
+                            <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-green-100">
                                 Open Group Savings
                                 <FiArrowRight className="transition group-hover:translate-x-1" />
                             </div>

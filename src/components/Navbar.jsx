@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router-dom";
 import {
     FiHome,
@@ -34,14 +35,13 @@ export default function Navbar() {
     return (
         <>
             {/* Desktop Navbar */}
-            <nav className="hidden md:block bg-white border-b border-gray-100 z-10 w-full fixed ">
-                <div className="mx-auto flex max-w-8xl items-center justify-between px-6 py-4 ">
-
+            <nav className="fixed top-0 left-0 z-50 hidden w-full border-b border-gray-100 bg-white md:block">
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
                     <NavLink to="/" className="flex items-center">
                         <img
                             src={logoimg}
-                            alt=" Logo"
-                            className="h-15 rounded-2xl w-auto obtain-contain "
+                            alt="PadiSave Logo"
+                            className="h-12 w-auto object-contain"
                         />
                     </NavLink>
 
@@ -55,14 +55,14 @@ export default function Navbar() {
                                     to={item.path}
                                     end={item.path === "/"}
                                     className={({ isActive }) =>
-                                        `flex items-center gap-2 text-sm font-medium transition ${isActive
-                                            ? "text-green-700"
+                                        `flex items-center gap-2 text-sm font-medium transition-colors ${isActive
+                                            ? "text-green-800"
                                             : "text-gray-600 hover:text-green-700"
                                         }`
                                     }
                                 >
                                     <Icon size={18} />
-                                    {item.name}
+                                    <span>{item.name}</span>
                                 </NavLink>
                             );
                         })}
@@ -70,7 +70,7 @@ export default function Navbar() {
 
                     <NavLink
                         to="/login"
-                        className="rounded-xl bg-green-800 px-5 py-2.5 text-sm font-semibold text-white hover:bg-green-900"
+                        className="rounded-xl bg-green-800 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-900"
                     >
                         Login
                     </NavLink>
@@ -78,8 +78,8 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Bottom Navigation */}
-            <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 pb-[env(safe-area-inset-bottom)] shadow-[0_-4px_15px_rgba(0,0,0,0.06)] backdrop-blur md:hidden">
-                <div className="mx-auto grid max-w-lg grid-cols-4">
+            <nav className="fixed inset-x-0 bottom-0 z-[100] border-t border-gray-200 bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.08)] md:hidden">
+                <div className="mx-auto grid w-full max-w-lg grid-cols-4 pb-[env(safe-area-inset-bottom)]">
                     {navItems.map((item) => {
                         const Icon = item.icon;
 
@@ -89,7 +89,7 @@ export default function Navbar() {
                                 to={item.path}
                                 end={item.path === "/"}
                                 className={({ isActive }) =>
-                                    `flex min-h-[64px] flex-col items-center justify-center gap-1 px-1 py-2 text-xs transition ${isActive
+                                    `flex min-h-16 flex-col items-center justify-center gap-1 px-1 py-2 text-xs transition-colors ${isActive
                                         ? "font-semibold text-green-800"
                                         : "text-gray-500 hover:text-green-700"
                                     }`

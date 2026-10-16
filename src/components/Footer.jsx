@@ -6,10 +6,15 @@ import {
     FiPhone,
     FiMapPin,
 } from "react-icons/fi";
+import { FiArrowDownRight } from "react-icons/fi";
+
+
+
+
 
 function Footer() {
     return (
-        <footer className="border-t border-slate-200 bg-white">
+        <footer className="border-t border-slate-200 bg-[#012d1b]">
 
             {/* Main Footer */}
             <div className="mx-auto max-w-7xl px-5 py-12 sm:py-16 lg:px-8">
@@ -26,18 +31,18 @@ function Footer() {
                             </div>
 
                             <div>
-                                <h2 className="font-bold text-slate-900">
+                                <h2 className="font-bold text-slate-100">
                                     Padi-Save
                                 </h2>
 
-                                <p className="text-[10px] text-slate-500">
+                                <p className="text-[10px] text-slate-100">
                                     Daily Contribution, Better Future
                                 </p>
                             </div>
 
                         </div>
 
-                        <p className="mt-5 max-w-sm text-sm leading-6 text-slate-500">
+                        <p className="mt-5 max-w-sm text-sm leading-6 text-slate-100">
                             Helping Nigerians build better saving habits through
                             simple, consistent daily contributions.
                         </p>
@@ -80,7 +85,7 @@ function Footer() {
                     {/* Contact */}
                     <div>
 
-                        <h3 className="text-sm font-bold text-slate-900">
+                        <h3 className="text-xm font-bold text-slate-100">
                             Contact Us
                         </h3>
 
@@ -114,11 +119,11 @@ function Footer() {
 
                 <div className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-5 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left lg:px-8">
 
-                    <p className="text-xs text-slate-500 sm:text-sm">
+                    <p className="text-xs text-slate-100 sm:text-sm">
                         © {new Date().getFullYear()} Padi-save. All rights reserved.
                     </p>
 
-                    <p className="text-xs text-slate-400 sm:text-sm">
+                    <p className="text-xs text-slate-100 sm:text-sm">
                         Built for better financial habits 🇳🇬
                     </p>
 
@@ -135,7 +140,7 @@ function FooterColumn({ title, links }) {
     return (
         <div>
 
-            <h3 className="text-sm font-bold text-slate-900">
+            <h3 className="text-xm font-bold text-slate-100">
                 {title}
             </h3>
 
@@ -145,7 +150,7 @@ function FooterColumn({ title, links }) {
                     <a
                         key={link}
                         href="#"
-                        className="w-fit text-sm text-slate-500 transition hover:text-green-700"
+                        className="w-fit text-xs text-slate-100 transition hover:text-green-700"
                     >
                         {link}
                     </a>
@@ -178,7 +183,7 @@ function ContactItem({ icon, text }) {
                 {icon}
             </span>
 
-            <span className="text-sm text-slate-500">
+            <span className="text-sm text-slate-100">
                 {text}
             </span>
 

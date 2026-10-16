@@ -29,6 +29,13 @@ const steps = [
             "Start saving from just ₦200 daily and stay consistent with your savings plan.",
     },
     {
+        number: "03",
+        icon: <FiCalendar />,
+        title: "join team with friends save weekly and monthly",
+        description:
+            "Start saving and stay consistent with team savings plan.",
+    },
+    {
         number: "04",
         icon: <FiTrendingUp />,
         title: "Watch Your Savings Grow",
@@ -71,7 +78,7 @@ function HowItWorks() {
 
                 {/* Steps */}
                 <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2
-          lg:mt-16 lg:grid-cols-3 xl:grid-cols-5">
+          lg:mt-16 lg:grid-cols-3 xl:grid-cols-3">
 
                     {steps.map((step) => (
                         <div
